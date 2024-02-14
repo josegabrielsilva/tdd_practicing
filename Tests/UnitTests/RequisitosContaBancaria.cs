@@ -94,7 +94,8 @@ namespace UnitTests
             var resultadoSaque = conta.Saque(valorDeSaque);
 
             //Assert
-            resultadoSaque.Should().Be(9500);
+            const decimal valorContaBancariaAposSaque = 9500;
+            resultadoSaque.Should().Be(valorContaBancariaAposSaque);
         }
     }
 }

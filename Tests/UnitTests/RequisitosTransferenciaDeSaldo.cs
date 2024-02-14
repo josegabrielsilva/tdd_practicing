@@ -16,8 +16,10 @@ public class RequisitosTransferenciaDeSaldo
         var transferencia = new TransferenciaEntreContas(contaOrigem, contaDestino);
 
         //Act
+        const DayOfWeek diaTransferencia = DayOfWeek.Tuesday;
+        const int horaTransferencia = 10;
         var resultadoTransferencia = Assert.Throws<ArgumentException>
-            (() => transferencia.Transferir(DayOfWeek.Tuesday, 10, valorTransferencia));
+            (() => transferencia.Transferir(diaTransferencia, horaTransferencia, valorTransferencia));
 
         //Assert
         resultadoTransferencia.Message.Should().Contain(TransferenciaEntreContas.ValorTransferenciaDeveSerMaiorQueZero);
@@ -33,8 +35,10 @@ public class RequisitosTransferenciaDeSaldo
         const decimal valorTransferencia = 500;
 
         //Act
+        const DayOfWeek diaTransferencia = DayOfWeek.Saturday;
+        const int horaTransferencia = 10;
         var resultadoTransferencia = Assert.Throws<Exception>
-            (() => transferencia.Transferir(DayOfWeek.Saturday, 10, valorTransferencia));
+            (() => transferencia.Transferir(diaTransferencia, horaTransferencia, valorTransferencia));
 
         //Assert
         resultadoTransferencia.Message.Should().Contain(TransferenciaEntreContas.TransferenciaForaDiaUtil);
@@ -50,8 +54,10 @@ public class RequisitosTransferenciaDeSaldo
         const decimal valorTransferencia = 500;
 
         //Act
+        const DayOfWeek diaTransferencia = DayOfWeek.Tuesday;
+        const int horaTransferencia = 4;
         var resultadoTransferencia = Assert.Throws<Exception>
-            (() => transferencia.Transferir(DayOfWeek.Tuesday, 4, valorTransferencia));
+            (() => transferencia.Transferir(diaTransferencia, horaTransferencia, valorTransferencia));
         
         //Assert
         resultadoTransferencia.Message.Should().Contain(TransferenciaEntreContas.TransferenciaForaHorario);
@@ -71,10 +77,13 @@ public class RequisitosTransferenciaDeSaldo
         const decimal valorTransferencia = 500;
 
         //Act
-        transferencia.Transferir(DayOfWeek.Tuesday, 14, valorTransferencia);
+        const DayOfWeek diaTransferencia = DayOfWeek.Tuesday;
+        const int horaTransferencia = 14;
+        transferencia.Transferir(diaTransferencia, horaTransferencia, valorTransferencia);
 
         //Assert
-        contaOrigem.saldoConta.Should().Be(500);
+        const decimal saldoContaOrigemAposTransferencia = 500;
+        contaOrigem.saldoConta.Should().Be(saldoContaOrigemAposTransferencia);
     }
 
     [Fact]
@@ -90,11 +99,14 @@ public class RequisitosTransferenciaDeSaldo
         var transferencia = new TransferenciaEntreContas(contaOrigem, contaDestino);
         const decimal valorTransferencia = 500;
 
-        
+
         //Act
-        transferencia.Transferir(DayOfWeek.Tuesday, 14, valorTransferencia);
+        const DayOfWeek diaTransferencia = DayOfWeek.Tuesday;
+        const int horaTransferencia = 14;
+        transferencia.Transferir(diaTransferencia, horaTransferencia, valorTransferencia);
 
         //Assert
-        contaDestino.saldoConta.Should().Be(2500);
+        const decimal saldoContaDestinoAposTransferencia = 2500;
+        contaDestino.saldoConta.Should().Be(saldoContaDestinoAposTransferencia);
     }
 }
