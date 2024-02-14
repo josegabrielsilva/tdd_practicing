@@ -1,5 +1,5 @@
-﻿using FluentAssertions;
-using ClassLibrary1;
+﻿using ClassLibrary1;
+using FluentAssertions;
 
 namespace UnitTests;
 
@@ -8,57 +8,57 @@ public class RequisitosTransferenciaDeSaldo
     [Theory]
     [InlineData(0)]
     [InlineData(-1)]
-    public void Transferencia_QuandoValorTransferenciaForMenorOuIgualAZeroDeveRetornarException(decimal valorTransferencia) 
+    public void Transferencia_QuandoValorTransferenciaForMenorOuIgualAZero_DeveRetornarException(decimal valorTransferencia) 
     {
         //Arrange
         var contaOrigem = new ContaBancaria(1000);
         var contaDestino = new ContaBancaria(1000);
         var transferencia = new TransferenciaEntreContas(contaOrigem, contaDestino);
-        var dataValidaTransferencia = new DateTime(2024, 2, 12, 9, 10, 1);
 
         //Act
-        var resultadoTransferencia = Assert.Throws<ArgumentException>(() => transferencia.Transferir(
-            dataValidaTransferencia, valorTransferencia));
+        var resultadoTransferencia = Assert.Throws<ArgumentException>
+            (() => transferencia.Transferir(DayOfWeek.Tuesday, 10, valorTransferencia));
 
         //Assert
         resultadoTransferencia.Message.Should().Contain(TransferenciaEntreContas.ValorTransferenciaDeveSerMaiorQueZero);
     }
 
     [Fact]
-    public void Transferencia_QuandoTransferenciaEstiverForaDiaUtilDeveRetornarException() 
+    public void Transferencia_QuandoTransferenciaEstiverForaDiaUtil_DeveRetornarException() 
     {
         //Arrange
         var contaOrigem = new ContaBancaria(1000);
         var contaDestino = new ContaBancaria(1000);
         var transferencia = new TransferenciaEntreContas(contaOrigem, contaDestino);
         const decimal valorTransferencia = 500;
-        var dataForaDiaUtil = new DateTime(2024, 2, 10, 9, 10, 1);
 
         //Act
-        var resultadoTransferencia = Assert.Throws<Exception>(() => transferencia.Transferir(dataForaDiaUtil, valorTransferencia));
+        var resultadoTransferencia = Assert.Throws<Exception>
+            (() => transferencia.Transferir(DayOfWeek.Saturday, 10, valorTransferencia));
+
         //Assert
         resultadoTransferencia.Message.Should().Contain(TransferenciaEntreContas.TransferenciaForaDiaUtil);
     }
     
     [Fact]
-    public void Transferencia_QuandoTransferenciaEstiverForaHorarioDeveRetornarException() 
+    public void Transferencia_QuandoTransferenciaEstiverForaHorario_DeveRetornarException() 
     {
         //Arrange
         var contaOrigem = new ContaBancaria(1000);
         var contaDestino = new ContaBancaria(1000);
         var transferencia = new TransferenciaEntreContas(contaOrigem, contaDestino);
         const decimal valorTransferencia = 500;
-        var dataForaHorario = new DateTime(2024, 2, 12, 6, 10, 1);
 
         //Act
-        var resultadoTransferencia = Assert.Throws<Exception>(() => transferencia.Transferir(dataForaHorario, valorTransferencia));
+        var resultadoTransferencia = Assert.Throws<Exception>
+            (() => transferencia.Transferir(DayOfWeek.Tuesday, 4, valorTransferencia));
         
         //Assert
         resultadoTransferencia.Message.Should().Contain(TransferenciaEntreContas.TransferenciaForaHorario);
     }
 
     [Fact]
-    public void Transferencia_QuandoRealizarTransferenciaOValorTransferidoDeveSerDecrementadoDoSaldoAtualDaContaOrigem() 
+    public void Transferencia_QuandoRealizarTransferenciaOValorTransferido_DeveSerDecrementadoDoSaldoAtualDaContaOrigem() 
     {
         //Arrange
         const decimal ValorInicialContaOrigem = 1000;
@@ -70,18 +70,15 @@ public class RequisitosTransferenciaDeSaldo
         var transferencia = new TransferenciaEntreContas(contaOrigem, contaDestino);
         const decimal valorTransferencia = 500;
 
-        var dataValidaTransferencia = new DateTime(2024, 2, 12, 9, 10, 1);
-
         //Act
-        transferencia.Transferir(dataValidaTransferencia, valorTransferencia);
+        transferencia.Transferir(DayOfWeek.Tuesday, 14, valorTransferencia);
 
         //Assert
-
         contaOrigem.saldoConta.Should().Be(500);
     }
 
     [Fact]
-    public void Transferencia_QuandoRealizarTransferenciaOValorTransferidoDeveSerAcrescidoNoSaldoAtualContaDestino()
+    public void Transferencia_QuandoRealizarTransferenciaOValorTransferido_DeveSerAcrescidoNoSaldoAtualContaDestino()
     {
         //Arrange
         const decimal ValorInicialContaOrigem = 1000;
@@ -93,10 +90,9 @@ public class RequisitosTransferenciaDeSaldo
         var transferencia = new TransferenciaEntreContas(contaOrigem, contaDestino);
         const decimal valorTransferencia = 500;
 
-        var dataValidaTransferencia = new DateTime(2024, 2, 12, 9, 10, 1);
-
+        
         //Act
-        transferencia.Transferir(dataValidaTransferencia, valorTransferencia);
+        transferencia.Transferir(DayOfWeek.Tuesday, 14, valorTransferencia);
 
         //Assert
         contaDestino.saldoConta.Should().Be(2500);

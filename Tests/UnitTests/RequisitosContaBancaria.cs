@@ -6,7 +6,7 @@ namespace UnitTests
     public class RequisitosContaBancaria
     {
         [Fact]
-        public void Deposito_QuandoRealizarDepositoDeveRetornarOValorInicialAcrescidoDoValorDepositado()
+        public void Deposito_QuandoRealizarDeposito_DeveRetornarOValorInicialAcrescidoDoValorDepositado()
         {
             //Arrange
             decimal valorDeposito = 10;
@@ -23,7 +23,7 @@ namespace UnitTests
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
-        public void Deposito_QuandoValorDepositoForMenorOuIgualAZeroDeveRetornarException(int valorDeposito)
+        public void Deposito_QuandoValorDepositoForMenorOuIgualAZero_DeveRetornarException(int valorDeposito)
         {
             //Arrange
             var conta = new ContaBancaria(10);
@@ -36,7 +36,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void Saque_QuandoValorDeSaqueForMaiorQueSaldoDisponivelDeveRetornarException()
+        public void Saque_QuandoValorDeSaqueForMaiorQueSaldoDisponivel_DeveRetornarException()
         {
             //Arrange
             const decimal valorInicialContaBancaria = 100;
@@ -51,7 +51,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void Saque_QuandoValorDeSaqueExcederLimiteDiarioDeveRetornarException()
+        public void Saque_QuandoValorDeSaqueExcederLimiteDiario_DeveRetornarException()
         {
             //Arrange
             const decimal valorInicialContaBancaria = 10000;
@@ -69,7 +69,7 @@ namespace UnitTests
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
-        public void Saque_QuandoValorDeSaqueForMenorOuIgualAZeroDeveRetornarException(decimal valorDeSaque)
+        public void Saque_QuandoValorDeSaqueForMenorOuIgualAZero_DeveRetornarException(decimal valorDeSaque)
         {
             //Arrange
             const decimal valorInicialContaBancaria = 10000;
@@ -83,7 +83,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void Saque_QuandoRealizarSaqueDeveRetornarValorInicialContaMenosValorSolicitadoNoSaque()
+        public void Saque_QuandoRealizarSaque_DeveRetornarValorInicialContaMenosValorSolicitadoNoSaque()
         {
             //Arrange
             const decimal valorInicialContaBancaria = 10000;

@@ -10,16 +10,17 @@ public class TransferenciaEntreContas(ContaBancaria contaOrigem, ContaBancaria c
     private ContaBancaria contaDestino = contaDestino;
 
     public void Transferir(
-        DateTime dataTransferencia,
+        DayOfWeek diaSemanaTransferencia,
+        int horaTransferencia,
         decimal valorTransferencia)
     {
         if (valorTransferencia <= 0)
             throw new ArgumentException(ValorTransferenciaDeveSerMaiorQueZero, nameof(valorTransferencia));
 
-        if(!RegrasDoBanco.ValidarHoraLimiteTransferencia(dataTransferencia.Hour))
+        if(!RegrasDoBanco.ValidarHoraLimiteTransferencia(horaTransferencia))
             throw new Exception(TransferenciaForaHorario);
 
-        if (!RegrasDoBanco.ValidarDiaUtilTransferencia(dataTransferencia.Date.DayOfWeek))
+        if (!RegrasDoBanco.ValidarDiaUtilTransferencia(diaSemanaTransferencia))
             throw new Exception(TransferenciaForaDiaUtil);
 
         contaOrigem.Saque(valorTransferencia);
