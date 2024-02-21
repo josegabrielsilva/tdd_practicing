@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\Bank.Core.csproj" />
+    <ProjectReference Include="..\Bank.Core\Bank.Core.csproj" />
   </ItemGroup>
 
 </Project>
