@@ -1,23 +1,24 @@
 using FluentAssertions;
-using ClassLibrary1;
+using Bank.Core;
 
 namespace UnitTests
 {
     public class RequisitosContaBancaria
     {
         [Fact]
-        public void Deposito_QuandoRealizarDeposito_DeveRetornarOValorInicialAcrescidoDoValorDepositado()
+        public void Deposito_QuandoSolicitado_DeveRetornarSaldoInicialAcrescidoDoValorDepositado()
         {
             //Arrange
-            decimal valorDeposito = 10;
-            const decimal valorInicialDaContaBancaria = 100;
-            var conta = new ContaBancaria(valorInicialDaContaBancaria);
+            const decimal valorDeposito = 10;
+            const decimal saldoInicialDaContaBancaria = 100;
+            var conta = new ContaBancaria(saldoInicialDaContaBancaria);
 
             //Act
             var valorAposDeposito = conta.Depositar(valorDeposito);
 
             //Assert
-            valorAposDeposito.Should().Be(valorInicialDaContaBancaria + valorDeposito);
+            const decimal saldoContaBancariaAposDeposito = 110;
+            valorAposDeposito.Should().Be(saldoContaBancariaAposDeposito);
         }
 
         [Theory]
@@ -26,7 +27,8 @@ namespace UnitTests
         public void Deposito_QuandoValorDepositoForMenorOuIgualAZero_DeveRetornarException(int valorDeposito)
         {
             //Arrange
-            var conta = new ContaBancaria(10);
+            const decimal saldoInicialDaContaBancaria = 10;
+            var conta = new ContaBancaria(saldoInicialDaContaBancaria);
 
             //Act
             var result = Assert.Throws<ArgumentException>(() => conta.Depositar(valorDeposito));
@@ -39,8 +41,8 @@ namespace UnitTests
         public void Saque_QuandoValorDeSaqueForMaiorQueSaldoDisponivel_DeveRetornarException()
         {
             //Arrange
-            const decimal valorInicialContaBancaria = 100;
             const decimal valorDeSaque = 1000;
+            const decimal valorInicialContaBancaria = 100;
             var conta = new ContaBancaria(valorInicialContaBancaria);
 
             //Act
@@ -83,19 +85,19 @@ namespace UnitTests
         }
 
         [Fact]
-        public void Saque_QuandoRealizarSaque_DeveRetornarValorInicialContaMenosValorSolicitadoNoSaque()
+        public void Saque_QuandoRealizarSaque_DeveRetornarSaldoInicialContaMenosValorSacado()
         {
             //Arrange
-            const decimal valorInicialContaBancaria = 10000;
+            const decimal saldoInicialContaBancaria = 10000;
             const decimal valorDeSaque = 500;
-            var conta = new ContaBancaria(valorInicialContaBancaria);
+            var conta = new ContaBancaria(saldoInicialContaBancaria);
 
             //Act
             var resultadoSaque = conta.Saque(valorDeSaque);
 
             //Assert
-            const decimal valorContaBancariaAposSaque = 9500;
-            resultadoSaque.Should().Be(valorContaBancariaAposSaque);
+            const decimal saldoContaBancariaAposSaque = 9500;
+            resultadoSaque.Should().Be(saldoContaBancariaAposSaque);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace ClassLibrary1;
+﻿namespace Bank.Core;
 
 public class RegrasDoBanco
 {

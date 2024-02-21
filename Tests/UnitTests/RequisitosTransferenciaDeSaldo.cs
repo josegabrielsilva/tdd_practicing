@@ -1,4 +1,4 @@
-﻿using ClassLibrary1;
+﻿using Bank.Core;
 using FluentAssertions;
 
 namespace UnitTests;
@@ -83,7 +83,7 @@ public class RequisitosTransferenciaDeSaldo
 
         //Assert
         const decimal saldoContaOrigemAposTransferencia = 500;
-        contaOrigem.saldoConta.Should().Be(saldoContaOrigemAposTransferencia);
+        contaOrigem.SaldoConta.Should().Be(saldoContaOrigemAposTransferencia);
     }
 
     [Fact]
@@ -99,7 +99,6 @@ public class RequisitosTransferenciaDeSaldo
         var transferencia = new TransferenciaEntreContas(contaOrigem, contaDestino);
         const decimal valorTransferencia = 500;
 
-
         //Act
         const DayOfWeek diaTransferencia = DayOfWeek.Tuesday;
         const int horaTransferencia = 14;
@@ -107,6 +106,6 @@ public class RequisitosTransferenciaDeSaldo
 
         //Assert
         const decimal saldoContaDestinoAposTransferencia = 2500;
-        contaDestino.saldoConta.Should().Be(saldoContaDestinoAposTransferencia);
+        contaDestino.SaldoConta.Should().Be(saldoContaDestinoAposTransferencia);
     }
 }

@@ -1,4 +1,4 @@
-﻿using ClassLibrary1;
+﻿using Bank.Core;
 using FluentAssertions;
 
 namespace UnitTests;
