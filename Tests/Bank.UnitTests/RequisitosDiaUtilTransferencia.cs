@@ -8,7 +8,7 @@ public class RequisitosDiaUtilTransferencia
     [Theory]
     [InlineData(DayOfWeek.Sunday)]
     [InlineData(DayOfWeek.Saturday)]
-    public void ValidarDiaUtilTransferencia_SeDiaTransferenciaForFinalDeSemana_DeveRetornarFalse(DayOfWeek day) 
+    public void ValidarDiaUtilTransferencia_DiaTransferenciaFinalDeSemana_DeveRetornarFalse(DayOfWeek day) 
     {
         //Act
         var resultadoValidacao = RegrasDoBanco.ValidarDiaUtilTransferencia(day);
@@ -23,7 +23,7 @@ public class RequisitosDiaUtilTransferencia
     [InlineData(DayOfWeek.Wednesday)]
     [InlineData(DayOfWeek.Thursday)]
     [InlineData(DayOfWeek.Friday)]
-    public void ValidarDiaUtilTransferencia_SeDiaTransferenciaForDeSegundaASexta_DeveRetornarTrue(DayOfWeek day) 
+    public void ValidarDiaUtilTransferencia_DiaTransferenciaDeSegundaASexta_DeveRetornarTrue(DayOfWeek day) 
     {
         //Act
         var resultadoValidacao = RegrasDoBanco.ValidarDiaUtilTransferencia(day);

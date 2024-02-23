@@ -6,8 +6,8 @@ public class TransferenciaEntreContas(ContaBancaria contaOrigem, ContaBancaria c
     public const string TransferenciaForaHorario = "Transferencia fora de horário.";
     public const string TransferenciaForaDiaUtil = "Transferencia fora de dia util.";
     public Guid Id { get; private set; } = Guid.NewGuid();
-    private ContaBancaria contaOrigem = contaOrigem;
-    private ContaBancaria contaDestino = contaDestino;
+    private ContaBancaria ContaOrigem = contaOrigem;
+    private ContaBancaria ContaDestino = contaDestino;
 
     public void Transferir(
         DayOfWeek diaSemanaTransferencia,
@@ -23,7 +23,8 @@ public class TransferenciaEntreContas(ContaBancaria contaOrigem, ContaBancaria c
         if (!RegrasDoBanco.ValidarDiaUtilTransferencia(diaSemanaTransferencia))
             throw new Exception(TransferenciaForaDiaUtil);
 
-        contaOrigem.Saque(valorTransferencia);
-        contaDestino.Depositar(valorTransferencia);
+        ContaOrigem.Sacar(valorTransferencia);
+
+        ContaDestino.Depositar(valorTransferencia);
     }
 }

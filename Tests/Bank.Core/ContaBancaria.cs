@@ -24,11 +24,13 @@ public class ContaBancaria
     {
         if (valorDeposito <= 0)
             throw new ArgumentException(DeveSerMaiorQueZero, nameof(valorDeposito));
+
         SaldoConta += valorDeposito;
+
         return SaldoConta;
     }
 
-    public decimal Saque(decimal valorSaque)
+    public decimal Sacar(decimal valorSaque)
     {
         if (valorSaque > SaldoConta)
             throw new ArgumentException(ValorSaqueExcedeSaldoDisponivel, nameof(valorSaque));
@@ -38,7 +40,9 @@ public class ContaBancaria
 
         if (valorSaque <= 0)
             throw new ArgumentException(DeveSerMaiorQueZero, nameof(valorSaque));
+
         SaldoConta -= valorSaque;
+
         return SaldoConta;
     }
 }

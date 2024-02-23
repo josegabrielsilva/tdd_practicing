@@ -6,7 +6,7 @@ namespace UnitTests
     public class RequisitosContaBancaria
     {
         [Fact]
-        public void Deposito_QuandoSolicitado_DeveRetornarSaldoInicialAcrescidoDoValorDepositado()
+        public void Depositar_ValorDepositoMaiorQueZero_DeveSomarValorDepositoAoSaldo()
         {
             //Arrange
             const decimal valorDeposito = 10;
@@ -24,7 +24,7 @@ namespace UnitTests
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
-        public void Deposito_QuandoValorDepositoForMenorOuIgualAZero_DeveRetornarException(int valorDeposito)
+        public void Depositar_ValorDepositoMenorOuIgualAZero_DeveRetornarException(int valorDeposito)
         {
             //Arrange
             const decimal saldoInicialDaContaBancaria = 10;
@@ -38,7 +38,7 @@ namespace UnitTests
         }
 
         [Fact]
-        public void Saque_QuandoValorDeSaqueForMaiorQueSaldoDisponivel_DeveRetornarException()
+        public void Sacar_ValorSaqueMaiorQueSaldoDisponivel_DeveRetornarException()
         {
             //Arrange
             const decimal valorDeSaque = 1000;
@@ -46,14 +46,14 @@ namespace UnitTests
             var conta = new ContaBancaria(valorInicialContaBancaria);
 
             //Act
-            var resultadoSaque = Assert.Throws<ArgumentException>(() => conta.Saque(valorDeSaque));
+            var resultadoSaque = Assert.Throws<ArgumentException>(() => conta.Sacar(valorDeSaque));
 
             //Assert
             resultadoSaque.Message.Should().Contain(ContaBancaria.ValorSaqueExcedeSaldoDisponivel);
         }
 
         [Fact]
-        public void Saque_QuandoValorDeSaqueExcederLimiteDiario_DeveRetornarException()
+        public void Sacar_ValorSaqueExcederLimiteDiario_DeveRetornarException()
         {
             //Arrange
             const decimal valorInicialContaBancaria = 10000;
@@ -62,7 +62,7 @@ namespace UnitTests
             var conta = new ContaBancaria(valorInicialContaBancaria, limiteDiarioContaBancaria);
 
             //Act
-            var resultadoSaque = Assert.Throws<ArgumentException>(() => conta.Saque(valorDeSaque));
+            var resultadoSaque = Assert.Throws<ArgumentException>(() => conta.Sacar(valorDeSaque));
 
             //Assert
             resultadoSaque.Message.Should().Contain(ContaBancaria.ValorSaqueExcedeLimiteDiario);
@@ -71,21 +71,21 @@ namespace UnitTests
         [Theory]
         [InlineData(0)]
         [InlineData(-1)]
-        public void Saque_QuandoValorDeSaqueForMenorOuIgualAZero_DeveRetornarException(decimal valorDeSaque)
+        public void Sacar_ValorSaqueForMenorOuIgualAZero_DeveRetornarException(decimal valorDeSaque)
         {
             //Arrange
             const decimal valorInicialContaBancaria = 10000;
             var conta = new ContaBancaria(valorInicialContaBancaria);
 
             //Act
-            var resultadoSaque = Assert.Throws<ArgumentException>(() => conta.Saque(valorDeSaque));
+            var resultadoSaque = Assert.Throws<ArgumentException>(() => conta.Sacar(valorDeSaque));
 
             //Assert
             resultadoSaque.Message.Should().Contain(ContaBancaria.DeveSerMaiorQueZero);
         }
 
         [Fact]
-        public void Saque_QuandoRealizarSaque_DeveRetornarSaldoInicialContaMenosValorSacado()
+        public void Sacar_ValorSaqueValido_DeveSubtrairValorSaqueDoSaldo()
         {
             //Arrange
             const decimal saldoInicialContaBancaria = 10000;
@@ -93,7 +93,7 @@ namespace UnitTests
             var conta = new ContaBancaria(saldoInicialContaBancaria);
 
             //Act
-            var resultadoSaque = conta.Saque(valorDeSaque);
+            var resultadoSaque = conta.Sacar(valorDeSaque);
 
             //Assert
             const decimal saldoContaBancariaAposSaque = 9500;

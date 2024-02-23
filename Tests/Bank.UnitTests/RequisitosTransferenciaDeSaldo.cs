@@ -8,7 +8,7 @@ public class RequisitosTransferenciaDeSaldo
     [Theory]
     [InlineData(0)]
     [InlineData(-1)]
-    public void Transferencia_QuandoValorTransferenciaForMenorOuIgualAZero_DeveRetornarException(decimal valorTransferencia) 
+    public void Transferir_ValorTransferenciaMenorOuIgualAZero_DeveRetornarException(decimal valorTransferencia) 
     {
         //Arrange
         var contaOrigem = new ContaBancaria(1000);
@@ -26,7 +26,7 @@ public class RequisitosTransferenciaDeSaldo
     }
 
     [Fact]
-    public void Transferencia_QuandoTransferenciaEstiverForaDiaUtil_DeveRetornarException() 
+    public void Transferir_TransferenciaForaDiaUtil_DeveRetornarException() 
     {
         //Arrange
         var contaOrigem = new ContaBancaria(1000);
@@ -45,7 +45,7 @@ public class RequisitosTransferenciaDeSaldo
     }
     
     [Fact]
-    public void Transferencia_QuandoTransferenciaEstiverForaHorario_DeveRetornarException() 
+    public void Transferir_EstiverForaHorario_DeveRetornarException() 
     {
         //Arrange
         var contaOrigem = new ContaBancaria(1000);
@@ -64,7 +64,7 @@ public class RequisitosTransferenciaDeSaldo
     }
 
     [Fact]
-    public void Transferencia_QuandoRealizarTransferenciaOValorTransferido_DeveSerDecrementadoDoSaldoAtualDaContaOrigem() 
+    public void Transferir_DiaEHorarioPermitido_DeveDecrementarSaldoContaOrigemEIncrementarSaldoContaDestino() 
     {
         //Arrange
         const decimal ValorInicialContaOrigem = 1000;
@@ -84,27 +84,7 @@ public class RequisitosTransferenciaDeSaldo
         //Assert
         const decimal saldoContaOrigemAposTransferencia = 500;
         contaOrigem.SaldoConta.Should().Be(saldoContaOrigemAposTransferencia);
-    }
 
-    [Fact]
-    public void Transferencia_QuandoRealizarTransferenciaOValorTransferido_DeveSerAcrescidoNoSaldoAtualContaDestino()
-    {
-        //Arrange
-        const decimal ValorInicialContaOrigem = 1000;
-        var contaOrigem = new ContaBancaria(ValorInicialContaOrigem);
-
-        const decimal valorInicialContaDestino = 2000;
-        var contaDestino = new ContaBancaria(valorInicialContaDestino);
-
-        var transferencia = new TransferenciaEntreContas(contaOrigem, contaDestino);
-        const decimal valorTransferencia = 500;
-
-        //Act
-        const DayOfWeek diaTransferencia = DayOfWeek.Tuesday;
-        const int horaTransferencia = 14;
-        transferencia.Transferir(diaTransferencia, horaTransferencia, valorTransferencia);
-
-        //Assert
         const decimal saldoContaDestinoAposTransferencia = 2500;
         contaDestino.SaldoConta.Should().Be(saldoContaDestinoAposTransferencia);
     }

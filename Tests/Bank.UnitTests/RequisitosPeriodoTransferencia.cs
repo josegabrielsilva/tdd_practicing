@@ -6,7 +6,7 @@ namespace UnitTests;
 public class RequisitosPeriodoTransferencia
 {
     [Fact]
-    internal void ValidarHoraLimiteTransferencia_SeHorarioTransferenciaMenorQueHorarioInicio_DeveRetornarFalse() 
+    internal void ValidarHoraLimiteTransferencia_HoraTransferenciaMenorQueHoraInicial_DeveRetornarFalse() 
     {
         //Arrange
         const int horaTransferencia = 4;
@@ -19,7 +19,7 @@ public class RequisitosPeriodoTransferencia
     }
 
     [Fact]
-    internal void ValidarHoraLimiteTransferencia_SeHorarioTransferenciaMaiorQueHorarioFim_DeveRetornarFalse() 
+    internal void ValidarHoraLimiteTransferencia_HoraTransferenciaMaiorQueHoraFim_DeveRetornarFalse() 
     {
         //Arrange
         const int horaTransferencia = 19;
@@ -32,7 +32,7 @@ public class RequisitosPeriodoTransferencia
     }
 
     [Fact]
-    internal void ValidarHoraLimiteTransferencia_SeHorarioTransferenciaDentroDoPeriodo_DeveRetornarTrue() 
+    internal void ValidarHoraLimiteTransferencia_HoraTransferenciaDentroDoIntervalo_DeveRetornarTrue() 
     {
         //Arrange
         const int horaTransferencia = 14;
@@ -45,7 +45,7 @@ public class RequisitosPeriodoTransferencia
     }
 
     [Fact]
-    internal void ValidarHoraLimiteTransferencia_SeHorarioTransferenciaIgualAHorarioInicio_DeveRetornarTrue()
+    internal void ValidarHoraLimiteTransferencia_HoraTransferenciaIgualHoraInicial_DeveRetornarTrue()
     {
         //Arrange
         const int horaTransferencia = RegrasDoBanco.HoraInicioTransferencia;
@@ -58,7 +58,7 @@ public class RequisitosPeriodoTransferencia
     }
 
     [Fact]
-    internal void ValidarHoraLimiteTransferencia_SeHorarioTransferenciaIgualAHorarioFim_DeveRetornarTrue()
+    internal void ValidarHoraLimiteTransferencia_HoraTransferenciaIgualHoraFim_DeveRetornarTrue()
     {
         //Arrange
         const int horaTransferencia = RegrasDoBanco.HoraFimTransferencia;
