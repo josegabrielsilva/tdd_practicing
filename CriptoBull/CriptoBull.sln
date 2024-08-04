@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriptoBull.Domain", "CriptoBull.Domain\CriptoBull.Domain.csproj", "{DE78E37A-43BB-4258-85E2-599CF00FCCCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriptoBull.Tests", "CriptoBull.Tests\CriptoBull.Tests.csproj", "{D1B1AE2E-32BA-4654-B380-2252516D381A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriptoBull.Application", "CriptoBull.Application\CriptoBull.Application.csproj", "{F3B229BE-47B2-4DB4-9D8A-329789943417}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriptoBull.Integrations", "CriptoBull.Integrations\CriptoBull.Integrations.csproj", "{2ADF9C8E-2476-43AB-A507-F67138F2D9A9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriptoBull.Api", "CriptoBull.Api\CriptoBull.Api.csproj", "{56AB5137-6E6E-4EAF-BB02-4522589E8C6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CriptoBull.IoC", "CriptoBull.IoC\CriptoBull.IoC.csproj", "{1F171CE3-9184-4672-A6BC-42DAA4871733}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE78E37A-43BB-4258-85E2-599CF00FCCCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE78E37A-43BB-4258-85E2-599CF00FCCCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE78E37A-43BB-4258-85E2-599CF00FCCCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE78E37A-43BB-4258-85E2-599CF00FCCCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1B1AE2E-32BA-4654-B380-2252516D381A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1B1AE2E-32BA-4654-B380-2252516D381A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1B1AE2E-32BA-4654-B380-2252516D381A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1B1AE2E-32BA-4654-B380-2252516D381A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3B229BE-47B2-4DB4-9D8A-329789943417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B229BE-47B2-4DB4-9D8A-329789943417}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B229BE-47B2-4DB4-9D8A-329789943417}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B229BE-47B2-4DB4-9D8A-329789943417}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ADF9C8E-2476-43AB-A507-F67138F2D9A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ADF9C8E-2476-43AB-A507-F67138F2D9A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ADF9C8E-2476-43AB-A507-F67138F2D9A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ADF9C8E-2476-43AB-A507-F67138F2D9A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56AB5137-6E6E-4EAF-BB02-4522589E8C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56AB5137-6E6E-4EAF-BB02-4522589E8C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56AB5137-6E6E-4EAF-BB02-4522589E8C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56AB5137-6E6E-4EAF-BB02-4522589E8C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F171CE3-9184-4672-A6BC-42DAA4871733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F171CE3-9184-4672-A6BC-42DAA4871733}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F171CE3-9184-4672-A6BC-42DAA4871733}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F171CE3-9184-4672-A6BC-42DAA4871733}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E6A7A94-4C6D-4F65-8BAE-CF2CF05C0466}
+	EndGlobalSection
+EndGlobal
