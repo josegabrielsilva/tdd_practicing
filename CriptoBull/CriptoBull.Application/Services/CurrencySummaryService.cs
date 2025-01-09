@@ -26,9 +26,9 @@ public class CurrencySummaryService(ICoinMarketCapIntegration coinMarketCapInteg
 
     public async Task<List<(string symbol, decimal price)>> Prices(List<string> symbols)
     {
-        string JoinedSymbols = string.Join(",", symbols);
+        string joinedSymbols = string.Join(",", symbols);
 
-        var currentPrices = await coinMarketCapIntegration.GetCurrentPrices(JoinedSymbols);
+        var currentPrices = await coinMarketCapIntegration.GetCurrentPrices(joinedSymbols);
 
         return currentPrices
             .Select(x => (x.Key, x.Value))
