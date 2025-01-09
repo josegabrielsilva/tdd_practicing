@@ -1,6 +1,6 @@
 ﻿namespace CriptoBull.Domain.Entities;
 
-public class WalletSummary
+public sealed record WalletSummary
 {
     private readonly List<CurrencySummary> CurrencySummaries = [];
 

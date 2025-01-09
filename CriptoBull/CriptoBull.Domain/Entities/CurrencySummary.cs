@@ -1,26 +1,22 @@
 ﻿namespace CriptoBull.Domain.Entities;
 
-public sealed class CurrencySummary(CurrencyInput currencyInput, decimal currentPrice)
+public sealed record CurrencySummary(CurrencyInput CurrencyInput, decimal CurrentPrice)
 {
-    public decimal CurrentPrice { get; private set; } = currentPrice;
-
-    public string Symbol { get; set; } = currencyInput.Symbol;
-
     public decimal Variation
     {
-        get => currencyInput.AveragePrice > 0
-            ? (CurrentPrice - currencyInput.AveragePrice) / currencyInput.AveragePrice * 100
+        get => CurrencyInput.AveragePrice > 0
+            ? (CurrentPrice - CurrencyInput.AveragePrice) / CurrencyInput.AveragePrice * 100
             : 0;
     }
 
     public decimal InvestedCapital
     {
-        get => currencyInput.TokenQuantity * currencyInput.AveragePrice;
+        get => CurrencyInput.TokenQuantity * CurrencyInput.AveragePrice;
     }
 
     public decimal MarketValue
     {
-        get => currencyInput.TokenQuantity * CurrentPrice;
+        get => CurrencyInput.TokenQuantity * CurrentPrice;
     }
 
     public decimal Gain

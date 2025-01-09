@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CriptoBull.Application\CriptoBull.Application.csproj" />
     <ProjectReference Include="..\CriptoBull.Domain\CriptoBull.Domain.csproj" />
   </ItemGroup>
 

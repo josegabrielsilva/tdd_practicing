@@ -9,11 +9,11 @@ namespace CriptoBull.Tests
         public void Test1()
         {
             var walletSummary = new CurrencySummary(
-                currencyInput: new CurrencyInput(
-                    symbol: "TIA", 
-                    tokenQuantity: 100, 
-                    averagePrice: 4m), 
-                currentPrice: 8m);
+                CurrencyInput: new CurrencyInput(
+                    Symbol: "TIA", 
+                    TokenQuantity: 100, 
+                    AveragePrice: 4m), 
+                CurrentPrice: 8m);
 
             Math.Round(walletSummary.Variation)
                 .Should()

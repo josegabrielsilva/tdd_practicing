@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriptoBull.Integrations", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriptoBull.Api", "CriptoBull.Api\CriptoBull.Api.csproj", "{56AB5137-6E6E-4EAF-BB02-4522589E8C6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CriptoBull.IoC", "CriptoBull.IoC\CriptoBull.IoC.csproj", "{1F171CE3-9184-4672-A6BC-42DAA4871733}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriptoBull.IoC", "CriptoBull.IoC\CriptoBull.IoC.csproj", "{1F171CE3-9184-4672-A6BC-42DAA4871733}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

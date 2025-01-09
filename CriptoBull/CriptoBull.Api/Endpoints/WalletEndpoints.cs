@@ -1,7 +1,7 @@
 using CriptoBull.Application.Services;
 using CriptoBull.Domain.Entities;
 
-namespace CriptoBull.Api.Controllers;
+namespace CriptoBull.Api.Endpoints;
 
 public static class WalletEndpoints
 {

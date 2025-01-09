@@ -24,11 +24,11 @@ public class CurrencySummaryService(ICoinMarketCapIntegration coinMarketCapInteg
         return currencySummaries;
     }
 
-    public async Task<List<(string symbol, decimal price)>> Prices(List<string> currencies)
+    public async Task<List<(string symbol, decimal price)>> Prices(List<string> symbols)
     {
-        string symbols = string.Join(",", currencies);
+        string JoinedSymbols = string.Join(",", symbols);
 
-        var currentPrices = await coinMarketCapIntegration.GetCurrentPrices(symbols);
+        var currentPrices = await coinMarketCapIntegration.GetCurrentPrices(JoinedSymbols);
 
         return currentPrices
             .Select(x => (x.Key, x.Value))
