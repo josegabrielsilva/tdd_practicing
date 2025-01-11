@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: criptobull-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: criptobull-api
+  template:
+    metadata:
+      labels:
+        app: criptobull-api
+    spec:
+      containers:
+        - name: criptobull-api
+          image: criptobull-api:latest
+          ports:
+            - containerPort: 80

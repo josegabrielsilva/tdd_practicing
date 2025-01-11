@@ -2,6 +2,7 @@
 using CriptoBull.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
+using System.Globalization;
 
 namespace CriptoBull.Api.Endpoints;
 
@@ -18,9 +19,14 @@ public static class CurrencyEndpoints
 
         endpoints.MapPost("/currency/prices", async (List<string> symbols, ICurrencySummaryService service) =>
         {
-            var currencySummaries = await service.Prices(symbols);
+            var currencyPrices = await service.Prices(symbols);
 
-            return Results.Ok(currencySummaries.Select(x => x.price));
+            IEnumerable<string> formattedPrices = currencyPrices
+                .Select(x => x.price.ToString("0.00000").Replace('.', ','));
+
+            return Results.Text(
+                string.Join("\n", formattedPrices), 
+                "text/plain");
         });
     }
 }
