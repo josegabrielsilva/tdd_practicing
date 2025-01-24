@@ -1,8 +1,6 @@
 ﻿using CriptoBull.Application.Services;
 using CriptoBull.Domain.Entities;
-using Microsoft.AspNetCore.Authorization;
 using System.Data;
-using System.Globalization;
 
 namespace CriptoBull.Api.Endpoints;
 
