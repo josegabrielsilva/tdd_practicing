@@ -1,7 +1,6 @@
 ﻿using CriptoBull.Api;
 using CriptoBull.Api.Integrations;
 using CriptoBull.Domain.Services;
-using CriptoBull.Integrations;
 using Keycloak.AuthServices.Authentication;
 using Keycloak.AuthServices.Authorization;
 
