@@ -1,4 +1,4 @@
-﻿namespace CriptoBull.Application.Integrations;
+﻿namespace CriptoBull.Api.Integrations;
 
 public interface ICoinMarketCapIntegration
 {

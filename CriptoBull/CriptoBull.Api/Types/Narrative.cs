@@ -1,4 +1,4 @@
-﻿namespace CriptoBull.Domain.Types;
+﻿namespace CriptoBull.Api.Types;
 
 public enum Narrative
 {
@@ -8,5 +8,6 @@ public enum Narrative
     Rwa,
     Oracle,
     Blockchain,
-    Gaming
+    Gaming,
+    Sci
 }

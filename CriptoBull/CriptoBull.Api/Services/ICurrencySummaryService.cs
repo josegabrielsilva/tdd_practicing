@@ -1,6 +1,6 @@
-﻿using CriptoBull.Domain.Entities;
+﻿using CriptoBull.Api.Entities;
 
-namespace CriptoBull.Application.Services;
+namespace CriptoBull.Domain.Services;
 
 public interface ICurrencySummaryService
 {

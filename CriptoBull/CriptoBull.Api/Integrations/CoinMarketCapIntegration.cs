@@ -1,12 +1,11 @@
-﻿using CriptoBull.Domain.Integrations;
-using System.Net.Http.Headers;
+﻿using System.Net.Http.Headers;
 using System.Text.Json;
 
-namespace CriptoBull.Integrations;
+namespace CriptoBull.Api.Integrations;
 
 public sealed class CoinMarketCapIntegration : ICoinMarketCapIntegration
 {
-    private const string ApiKey = "eb32cb82-4b30-490e-88a5-b68c7dd75a3b";
+    private const string ApiKey = "";
     private const string BaseUrl = "https://pro-api.coinmarketcap.com/v1/";
 
     public async Task<Dictionary<string, decimal>> GetCurrentPrices(string symbols)

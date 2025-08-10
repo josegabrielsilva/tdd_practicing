@@ -1,4 +1,4 @@
-﻿namespace CriptoBull.Domain.Entities;
+﻿namespace CriptoBull.Api.Entities;
 
 public sealed record WalletSummary
 {

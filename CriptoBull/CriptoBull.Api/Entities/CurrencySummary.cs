@@ -1,6 +1,8 @@
-﻿namespace CriptoBull.Domain.Entities;
+﻿namespace CriptoBull.Api.Entities;
 
-public sealed record CurrencySummary(CurrencyInput CurrencyInput, decimal CurrentPrice)
+public sealed record CurrencySummary(
+    CurrencyInput CurrencyInput, 
+    decimal CurrentPrice)
 {
     public decimal Variation
     {

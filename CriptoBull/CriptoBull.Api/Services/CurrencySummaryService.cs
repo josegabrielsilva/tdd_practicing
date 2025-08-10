@@ -1,10 +1,11 @@
 ﻿
-using CriptoBull.Application.Integrations;
-using CriptoBull.Domain.Entities;
+using CriptoBull.Api.Integrations;
+using CriptoBull.Api.Entities;
+using Microsoft.Extensions.Logging;
 
-namespace CriptoBull.Application.Services;
+namespace CriptoBull.Domain.Services;
 
-public class CurrencySummaryService(ICoinMarketCapIntegration coinMarketCapIntegration) : ICurrencySummaryService
+public class CurrencySummaryService(ICoinMarketCapIntegration coinMarketCapIntegration, ILogger<CurrencySummaryService> logger) : ICurrencySummaryService
 {
     public async Task<List<CurrencySummary>> PriceEnrich(List<CurrencyInput> currencieInputs)
     {
@@ -28,10 +29,12 @@ public class CurrencySummaryService(ICoinMarketCapIntegration coinMarketCapInteg
     {
         string joinedSymbols = string.Join(",", symbols);
 
+        logger.LogInformation("Fetching current prices");
+
         var currentPrices = await coinMarketCapIntegration.GetCurrentPrices(joinedSymbols);
 
-        return currentPrices
-            .Select(x => (x.Key, x.Value))
-            .ToList();
+        logger.LogInformation("Fetched current prices");
+
+        return [.. currentPrices.Select(x => (x.Key, x.Value))];
     }
 }

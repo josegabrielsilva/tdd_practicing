@@ -1,5 +1,5 @@
+using CriptoBull.Api;
 using CriptoBull.Api.Endpoints;
-using CriptoBull.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 

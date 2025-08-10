@@ -11,12 +11,11 @@
 
   <ItemGroup>
 
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
-  </ItemGroup>
+    <PackageReference Include="Keycloak.AuthServices.Authentication" Version="2.6.1" />
 
-  <ItemGroup>
-    <ProjectReference Include="..\CriptoBull.Application\CriptoBull.Application.csproj" />
-    <ProjectReference Include="..\CriptoBull.IoC\CriptoBull.IoC.csproj" />
+    <PackageReference Include="Keycloak.AuthServices.Authorization" Version="2.6.1" />
+
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
   </ItemGroup>
 
   <ItemGroup>
