@@ -18,10 +18,10 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore ../CriptoBull/CriptoBull.sln
+      run: dotnet restore CriptoBull.sln
     - name: Build API project
-      run: dotnet build ../CriptoBull/CriptoBull.Api/CriptoBull.Api.csproj --no-restore
+      run: dotnet build CriptoBull.Api/CriptoBull.Api.csproj --no-restore
     - name: Build Test project
-      run: dotnet build ../CriptoBull/CriptoBull.Tests/CriptoBull.Tests.csproj --no-restore
+      run: dotnet build CriptoBull.Tests/CriptoBull.Tests.csproj --no-restore
     - name: Test
-      run: dotnet test ../CriptoBull/CriptoBull.Tests/CriptoBull.Tests.csproj --no-build --verbosity normal
+      run: dotnet test CriptoBull.Tests/CriptoBull.Tests.csproj --no-build --verbosity normal
